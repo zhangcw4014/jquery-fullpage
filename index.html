@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>全屏滑动</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        h1,html,body{
+            height: 100%;
+        }
+        body{
+            font-family: Arial,"Microsoft YaHei";
+        }
+        h1{
+            font-size: 6em;
+            font-weight: normal;
+        }
+        p{
+            margin-bottom: 10px;
+        }
+        #container,.section{
+            height: 100%;
+            position:relative;
+        }
+        #section0,#section1,#section2,#section3{
+            background-color:#000;
+            background-size:cover;/*把背景图像扩展至足够大，以使背景图像完全覆盖背景区域*/
+            background-position: 50% 50%;
+            text-align: center;
+            color: #fff;
+        }
+        #section0{
+            background-image:url(images/1.jpg);
+        }
+        #section1{
+            background-image:url(images/2.jpg);
+        }
+        #section2{
+            background-image:url(images/3.jpg);
+        }
+        #section3{
+            background-image:url(images/4.jpg);
+        }
+        .left{
+            float:left;
+        }
+        .intro{
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            text-align: center;
+        }
+        #pages{
+            position:fixed;
+            right: 10px;
+            top: 50%;
+            list-style: none;
+        }
+        #pages li{
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #fff;
+            margin: 0 0 10px 5px;
+        }
+        #pages li.active{
+            width: 14px;
+            height: 14px;
+            border: 2px solid #FFFE00;
+            background: none;
+            margin-left: 0;
+        }
+        #section0 .title{
+            -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+            -webkit-animation: sectitle0 1s ease-in-out 100ms forwards;
+            animation: sectitle0 1s ease-in-out 100ms forwards;
+        }
+        #section0 p{
+            -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+            -webkit-animation: sec0 1s ease-in-out 100ms forwards;
+            animation: sec0 1s ease-in-out 100ms forwards;
+        }
+        @-webkit-keyframes sectitle0{
+            0%{
+                -webkit-transform: translateX(-100%);
+                transform: translateX(-100%);
+            }
+            100%{
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+        }
+        @keyframes sectitle0{
+            0%{
+                -webkit-transform: translateX(-100%);
+                transform: translateX(-100%);
+            }
+            100%{
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+        }
+        @-webkit-keyframes sec0{
+            0%{
+                -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+            }
+            100%{
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+        }
+        @keyframes sec0{
+            0%{
+                -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+            }
+            100%{
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div class="section active" id="section0">
+        <div class="intro">
+            <h1 class="title">个人简历</h1>
+            <p>jQuery全屏滑动开发实例</p>
+        </div>
+    </div>
+    <div class="section" id="section1">
+        <div class="intro">
+            <h1 class="title">Example</h1>
+            <p>网页设计作品1</p>
+            <img src="images/example1.jpg" style="width: 746px;height: 416px"/>
+        </div>
+
+    </div>
+    <div class="section" id="section2">
+        <div class="intro">
+            <h1 class="title">Example</h1>
+            <p>The plug-in configuration parameters</p>
+            <img src="images/example2.png"/>
+        </div>
+    </div>
+    <div class="section" id="section3">
+        <div class="intro">
+            <h1 class="title">THE END</h1>
+            <p>Everything will be okay in the end. If it's not okay, it's not the end.</p>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/pageswitch.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $("#container").switchPage({
+            'loop' : true,
+            'keyboard' : true,
+            'direction' : 'vertical'
+        });
+    });
+</script>
+</body>
+</html>
